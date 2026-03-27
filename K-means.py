@@ -49,20 +49,19 @@ plt.show()
 
 ostateczny_kmeans = KMeans(n_clusters=4, random_state=18271, n_init=10)
 
-df_scalowane['Grupa'] = ostateczny_kmeans.fit_predict(X)
+df['Grupa'] = ostateczny_kmeans.fit_predict(X)
 
-print(df_scalowane[['Wojewodztwo', 'Grupa']].sort_values(by='Grupa', ascending=False).head(16))
+print(df[['Wojewodztwo', 'Grupa']].sort_values(by='Grupa', ascending=False).head(16))
 
-# Profilowanie klastrów
+# Profilowanie klastrów //Zamienic df_scalowanie na df
 
-analiza_grup = df_scalowane.groupby('Grupa')[cechy].mean()
-analiza_grup['Liczba_Wojewodztw'] = df_scalowane.groupby('Grupa')['Wojewodztwo'].count()
+analiza_grup = df.groupby('Grupa')[cechy].mean()
+analiza_grup['Liczba_Wojewodztw'] = df.groupby('Grupa')['Wojewodztwo'].count()
 
 print("--- PROFIL ŚREDNIEGO WOJEWÓDZTWA W GRUPIE ---")
 print(analiza_grup)
 
 
-#Zrobic Metode Warda
 
 
 
